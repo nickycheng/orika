@@ -19,7 +19,7 @@
 package ma.glasnost.orika.impl;
 
 import java.util.Map;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import ma.glasnost.orika.MappingContext;
 import ma.glasnost.orika.MappingContextFactory;
@@ -35,8 +35,8 @@ public class NonCyclicMappingContext extends MappingContext {
      * Factory constructs instances of the base MappingContext
      */
     public static class Factory implements MappingContextFactory {
-        
-        final LinkedBlockingQueue<MappingContext> contextQueue = new LinkedBlockingQueue<MappingContext>();
+
+        final ConcurrentLinkedQueue<MappingContext> contextQueue = new ConcurrentLinkedQueue<MappingContext>();
         final Map<Object, Object> globalProperties;
         
         /**

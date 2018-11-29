@@ -24,7 +24,7 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import ma.glasnost.orika.cern.colt.map.OpenIntObjectHashMap;
 import ma.glasnost.orika.metadata.ClassMap;
@@ -60,8 +60,8 @@ public class MappingContext {
      * Factory constructs instances of the base MappingContext
      */
     public static class Factory implements MappingContextFactory {
-        
-        LinkedBlockingQueue<MappingContext> contextQueue = new LinkedBlockingQueue<MappingContext>();
+
+        ConcurrentLinkedQueue<MappingContext> contextQueue = new ConcurrentLinkedQueue<MappingContext>();
         ConcurrentHashMap<Object, Object> globalProperties = new ConcurrentHashMap<Object, Object>();
         
         public MappingContext getContext() {
